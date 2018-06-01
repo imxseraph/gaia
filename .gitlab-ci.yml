@@ -5,7 +5,6 @@ services:
 
 variables:
   REPO: imxseraph/muxin-io
-  NGINX: nginx
 
 stages:
   - build 
@@ -19,5 +18,5 @@ build:
     - muxin-host
   when: manual
   script:
-    - docker build -t $REPO:$NGINX .
-    - docker push $REPO:$NGINX
+    - docker build -t $REPO:latest .
+    - docker push $REPO:latest
