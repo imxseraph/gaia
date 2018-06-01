@@ -3,13 +3,25 @@ image: docker:stable
 services:
   - docker:dind
 
+variables:
+  REPO: imxseraph/muxin-io
+  NGINX_TEST: nginx-test
+  NGINX: nginx
+
 stages:
-  - build
   - test
   - release 
 
 before_script:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+test-nginx:
+  stage: test
+  tags: 
+    - muxin-host
+  script:
+    - docker build -t $REPO:$NGINX_TEST nginx
+    - docker push $REPO:$NGINX_TEST
 
 release-nginx:
   stage: release
@@ -17,5 +29,5 @@ release-nginx:
     - muxin-host
   when: manual
   script:
-    - docker build -t imxseraph/muxin-io:nginx nginx
-    - docker push imxseraph/muxin-io:nginx
+    - docker build -t $REPO:$NGINX nginx
+    - docker push $REPO:$NGINX
