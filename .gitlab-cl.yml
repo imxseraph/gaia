@@ -1,0 +1,11 @@
+image: docker:latest
+
+before_script:
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+release-nginx:
+  tags: muxin-host
+  when: manual
+  script:
+    - docker build -t imxseraph/muxin-io:nginx nginx
+    - docker push imxseraph/muxin-io:nginx
