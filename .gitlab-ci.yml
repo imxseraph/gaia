@@ -5,26 +5,16 @@ services:
 
 variables:
   REPO: imxseraph/muxin-io
-  NGINX_TEST: nginx-test
   NGINX: nginx
 
 stages:
-  - test
-  - release 
+  - build 
 
 before_script:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-test-nginx:
-  stage: test
-  tags: 
-    - muxin-host
-  script:
-    - docker build -t $REPO:$NGINX_TEST nginx
-    - docker push $REPO:$NGINX_TEST
-
-release-nginx:
-  stage: release
+build-nginx:
+  stage: build
   tags: 
     - muxin-host
   when: manual
