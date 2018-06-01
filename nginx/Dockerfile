@@ -1,4 +1,5 @@
 FROM nginx:latest
 
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY conf.d /etc/nginx/conf.d
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/conf.d /etc/nginx/conf.d
+COPY ./site /data/site
