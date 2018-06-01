@@ -13,5 +13,5 @@ ENV LANG C.UTF-8
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/conf.d /etc/nginx/conf.d
 
-COPY --from=node /blog/public/* /data/site/muxin.io/
-COPY love/* /data/site/yating.love/
+COPY --from=node /blog/public/ /data/site/muxin.io/
+COPY love/ /data/site/yating.love/
