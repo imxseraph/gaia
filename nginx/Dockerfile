@@ -1,7 +1,7 @@
 FROM node:latest AS node
 
 WORKDIR blog
-RUN npm install -g hexo && npm install && hexo g
+RUN pwd && ls && npm install -g hexo && npm install && hexo g
 
 FROM nginx:latest AS nginx
 
