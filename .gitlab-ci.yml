@@ -12,7 +12,7 @@ before_script:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 release-nginx:
-  stages: release
+  stage: release
   tags: 
     - muxin-host
   when: manual
