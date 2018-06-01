@@ -3,7 +3,7 @@ image: docker:latest
 before_script:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-release-nginx:
+release_nginx:
   tags: muxin-host
   when: manual
   script:
