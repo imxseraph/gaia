@@ -1,12 +1,18 @@
 image: docker:latest
 
 services:
-  - docker:dind 
+  - docker:dind
+
+stages:
+  - build
+  - test
+  - release 
 
 before_script:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 release-nginx:
+  stages: release
   tags: 
     - muxin-host
   when: manual
