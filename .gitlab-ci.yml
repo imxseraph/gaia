@@ -13,11 +13,11 @@ stages:
 before_script:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-build-nginx:
+build:
   stage: build
   tags: 
     - muxin-host
   when: manual
   script:
-    - docker build -t $REPO:$NGINX nginx
+    - docker build -t $REPO:$NGINX .
     - docker push $REPO:$NGINX
