@@ -17,7 +17,6 @@ build:
   stage: build
   tags: 
     - muxin-host
-  when: manual
   script:
     - docker build -t $REPO:$NGINX .
     - docker push $REPO:$NGINX
