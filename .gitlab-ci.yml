@@ -1,22 +1,32 @@
-image: docker:stable
-
-services:
-  - docker:dind
-
-variables:
-  REPO: imxseraph/muxin-io
-  NGINX: nginx
-
 stages:
-  - build 
-
-before_script:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - build
+  - deploy 
 
 build:
   stage: build
+  image: docker:stable
+  when: manual
   tags: 
     - muxin-host
+  services:
+    - docker:dind
   script:
-    - docker build -t $REPO:$NGINX .
-    - docker push $REPO:$NGINX
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - docker build -t imxseraph/muxin-io:nginx .
+    - docker push imxseraph/muxin-io:nginx
+
+deploy:
+  stage: deploy
+  image: centos:7
+  when: manual
+  tags:
+    - muxin-host
+  script:
+    - yum install openssh-clients -y
+    - echo "$AUTO_DEPLOY_KEY" > gitlab
+    - mkdir .ssh
+    - chmod 700 .ssh
+    - ssh-keyscan host.muxin.io > .ssh/known_hosts
+    - chmod 644 .ssh/known_hosts
+    - scp deploy.sh gitlab@host.muxin.io:~/
+    - ssh gitlab@host.muxin.io "chmod +x deploy.sh && ./deploy.sh"
