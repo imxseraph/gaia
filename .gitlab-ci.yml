@@ -17,7 +17,6 @@ build:
 deploy:
   stage: deploy
   image: centos:7
-  when: manual
   tags:
     - muxin-host
   script:
