@@ -5,7 +5,6 @@ stages:
 build:
   stage: build
   image: docker:stable
-  when: manual
   tags: 
     - muxin-host
   services:
@@ -31,3 +30,4 @@ deploy:
     - chmod 644 ~/.ssh/known_hosts
     - scp deploy.sh gitlab@host.muxin.io:~/
     - ssh gitlab@host.muxin.io "chmod +x deploy.sh && ./deploy.sh"
+    - ssh gitlab@host.muxin.io "rm -f deploy.sh"
