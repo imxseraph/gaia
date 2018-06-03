@@ -23,11 +23,11 @@ deploy:
     - muxin-host
   script:
     - yum install openssh-clients -y
-    - mkdir .ssh
-    - chmod 700 .ssh
-    - echo "$AUTO_DEPLOY_KEY" > .ssh/id_rsa
-    - chmod 600 .ssh/id_rsa
-    - ssh-keyscan host.muxin.io > .ssh/known_hosts
-    - chmod 644 .ssh/known_hosts
+    - mkdir ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$AUTO_DEPLOY_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan host.muxin.io > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
     - scp deploy.sh gitlab@host.muxin.io:~/
     - ssh gitlab@host.muxin.io "chmod +x deploy.sh && ./deploy.sh"
