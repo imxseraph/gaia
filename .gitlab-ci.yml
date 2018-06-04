@@ -6,7 +6,7 @@ build:
   stage: build
   image: docker:stable
   tags: 
-    - muxin-host
+    - muxin-io
   services:
     - docker:dind
   script:
@@ -18,7 +18,7 @@ deploy:
   stage: deploy
   image: centos:7
   tags:
-    - muxin-host
+    - muxin-io
   script:
     - yum install openssh-clients -y
     - mkdir ~/.ssh
