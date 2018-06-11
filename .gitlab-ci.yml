@@ -11,8 +11,8 @@ build:
     - docker:dind
   script:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - docker build -t imxseraph/muxin-io:nginx .
-    - docker push imxseraph/muxin-io:nginx
+    - docker build -t imxseraph/muxin-io:gaia .
+    - docker push imxseraph/muxin-io:gaia
 
 deploy:
   stage: deploy
@@ -27,5 +27,4 @@ deploy:
     - chmod 600 ~/.ssh/id_rsa
     - ssh-keyscan host.muxin.io > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    - scp deploy.sh deploy@host.muxin.io:~/
-    - ssh deploy@host.muxin.io "chmod +x deploy.sh && ./deploy.sh && rm -f deploy.sh"
+    - ssh deploy@host.muxin.io "cd ~/docker-compose && git pull && sudo docker-compose -f gaia.yml down --rmi all && sudo docker-compose -f gaia.yml up -d"
