@@ -2,7 +2,6 @@ FROM node:alpine AS node
 
 ENV LANG C.UTF-8
 
-RUN apk update && apk add yarn
 COPY . /gaia
 
 # build muxin.io
@@ -11,7 +10,7 @@ RUN npm install -g hexo && npm install && hexo g
 
 # build chronos
 WORKDIR /gaia/chronos
-RUN yarn install && yarn build
+RUN npm install && npm run build
 
 # setup nginx
 FROM nginx:latest AS nginx
