@@ -4,8 +4,8 @@ ENV LANG C.UTF-8
 COPY . /gaia
 
 RUN apk update && apk add yarn \
-  && yarn global add hexo-cli && yarn --cwd /gaia/muxin.io && hexo g --cwd /gaia/muxin.io \
-  && yarn --cwd /gaia/chronos && yarn --cwd /gaia/chronos build
+  && cd /gaia/muxin.io && yarn global add hexo-cli && yarn && hexo g \
+  && cd /gaia/chronos && yarn && yarn build
 
 FROM nginx:alpine AS nginx
 ENV LANG C.UTF-8
