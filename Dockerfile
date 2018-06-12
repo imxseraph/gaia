@@ -1,21 +1,16 @@
 FROM alpine:latest AS alpine
-
 ENV LANG C.UTF-8
 
-RUN apk update && apk add yarn
 COPY . /gaia
-
-# build muxin.io
-WORKDIR /gaia/muxin.io
-RUN yarn global add hexo-cli && yarn && hexo g
-
-# build chronos
-WORKDIR /gaia/chronos
-RUN yarn && yarn build
+# install yarn
+RUN apk update && apk add yarn \
+  # build muxin.io
+  && yarn global add hexo-cli && yarn --cwd /gaia/muxin.io && hexo g --cwd /gaia/muxin.io \
+  # build chronos
+  && yarn --cwd /gaia/chronos && yarn build --cwd /gaia/chronos
 
 # setup nginx
-FROM nginx:latest AS nginx
-
+FROM nginx:alpine AS nginx
 ENV LANG C.UTF-8
 
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
