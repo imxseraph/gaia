@@ -58,9 +58,3 @@
   #}{{ theme.footer.custom_text }}{#
 #}</div>
 {% endif %}
-<div style="text-align:center;width:100%;height:50">
-  浙ICP备16043459号
-<div>
-<div style="text-align:center;width:100%;height:50">
-  浙公网安备 33010602007597号
-<div>
