@@ -8,7 +8,7 @@ build:
   tags: 
     - muxin-io
   services:
-    - docker:dind
+    - docker:stable-dind
   script:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t imxseraph/muxin-io:gaia .
@@ -16,15 +16,8 @@ build:
 
 deploy:
   stage: deploy
-  image: alpine:latest
+  image: muxin-io:ssh
   tags:
     - muxin-io
   script:
-    - apk update && apk add openssh-client
-    - mkdir ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
-    - ssh-keyscan host.muxin.io > ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-    - ssh deploy@host.muxin.io "cd deploy/gaia && sudo docker-compose down --rmi all && sudo docker-compose up -d"
+    - ssh -o StrictHostKeychecking=no root@muxin.in "cd /mntdeploy/gaia && docker-compose down --rmi all && docker-compose up -d"
