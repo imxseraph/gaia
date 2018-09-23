@@ -16,7 +16,7 @@ build:
 
 deploy:
   stage: deploy
-  image: muxin-io:ssh
+  image: imxseraph/muxin-io:ssh
   tags:
     - muxin-io
   script:
