@@ -20,4 +20,4 @@ deploy:
   tags:
     - muxin-io
   script:
-    - ssh -o StrictHostKeychecking=no root@muxin.in "cd /mntdeploy/gaia && docker-compose down --rmi all && docker-compose up -d"
+    - ssh -o StrictHostKeychecking=no root@muxin.in "cd /mnt/deploy/gaia && docker-compose down --rmi all && docker-compose up -d"
