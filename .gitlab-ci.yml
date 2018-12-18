@@ -6,7 +6,7 @@ build:
   stage: build
   image: docker:stable
   tags: 
-    - muxin-io
+    - muxin.io
   services:
     - docker:stable-dind
   script:
@@ -18,6 +18,6 @@ deploy:
   stage: deploy
   image: imxseraph/muxin-io:ssh
   tags:
-    - muxin-io
+    - muxin.io
   script:
     - ssh -o StrictHostKeychecking=no root@muxin.in "cd /mnt/deploy/gaia && docker-compose down --rmi all && docker-compose up -d"
