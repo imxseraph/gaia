@@ -7,8 +7,6 @@ build:
   image: docker:stable
   tags: 
     - muxin.io
-  services:
-    - docker:stable-dind
   script:
     - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t imxseraph/muxin-io:gaia .
