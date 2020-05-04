@@ -18,7 +18,7 @@ tags:
 
 ### 几个仓库
 
-![](gitlab-projects.png)
+{% asset_img gitlab-projects.png %}
 
 #### gaia
 
