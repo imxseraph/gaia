@@ -1,0 +1,32 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - master
+env:
+  IMAGE_NAME: imxseraph/muxin-io:gaia
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build -t $IMAGE_NAME .
+
+      - name: Log into registry
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u imxseraph --password-stdin
+
+      - name: Push image
+        run: docker push $IMAGE_NAME
+  deploy:
+    needs: push
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create the key
+        run: echo "${{ secrets.PRIVATE_KEY }}" > key && chmod 600 key
+      - name: Deploy
+        run: ssh -i key -o StrictHostKeychecking=no root@muxin.io "cd /mnt/deploy/gaia && docker-compose down --rmi all && docker-compose up -d"
