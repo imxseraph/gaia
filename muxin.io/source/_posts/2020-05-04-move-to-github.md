@@ -55,6 +55,15 @@ tags:
 
 所有的部署镜像都是我在docker hub上的私有仓库，这本身没什么问题，但是gitlab-ci可以在runner里面直接访问到私有仓库，拉到我的私有仓库进行部署，这个在workflow里没法这么干，只能把ssh key写到secrets里面，代码动态的保存下来进行远程deploy。看起来有点不科学，不过先这么用了。
 
+```yaml
+- name: Create the key
+  run: echo "${{ secrets.PRIVATE_KEY }}" > key && chmod 600 key
+- name: Deploy
+  run: ssh -i key -o StrictHostKeychecking=no root@muxin.io "cd /mnt/deploy/gaia && docker-compose down --rmi all && docker-compose up -d"
+```
+
+没错代码就是这么的妖！话说这个key应该跑完workflow会被删掉吧？？？要是没删掉下一个workflow还能用就gg了。我也没细看，相信不会这么蠢的设计的。
+
 第二个不爽的地方是github里面不能建group，导致我每个项目相同的secrets都要手动配一次，这个感觉也不科学。。
 
 基本初步体验就这样，后面看看有新项目要部署了再仔细研究下。
