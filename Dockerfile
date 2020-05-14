@@ -13,5 +13,7 @@ ENV LANG C.UTF-8
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/conf.d /etc/nginx/conf.d
 
+COPY jumping /data/site/jumping
+
 COPY --from=alpine /gaia/muxin.io/public/ /data/site/muxin.io/
 COPY --from=alpine /gaia/chronos/build/ /data/site/treehole.muxin.io/
