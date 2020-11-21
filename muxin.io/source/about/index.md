@@ -20,4 +20,3 @@ comments: false
 # 联系方式
 
 - E-mail: muxin@muxin.io
-- Tel: +1 (205) 462-7743, +86 18814849449
