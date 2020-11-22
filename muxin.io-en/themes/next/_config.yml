@@ -64,7 +64,7 @@ footer:
     color: "#ff0000"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright: 方牧心版权所有
+  copyright: Copyright Muxin Fang, All rights reserved
 
   # Powered by Hexo & NexT
   powered: false
@@ -121,7 +121,7 @@ menu:
   tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
-  English: https://muxin.io/us || fas fa-globe-americas
+  中文: https://muxin.io || fas fa-globe-asia
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
