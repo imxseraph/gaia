@@ -7,5 +7,8 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
+    if (window.location.host != 'muxin.io' && window.location.hostname != 'localhost') {
+      window.location.replace('https://muxin.io' + window.location.pathname)
+    }
   </script>
 {%- endif %}
