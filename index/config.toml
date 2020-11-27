@@ -2,11 +2,14 @@ baseURL = "https://muxin.io/"
 theme = "hugo-PaperMod"
 defaultContentLanguage = "zh"
 
+googleAnalytics = "G-6T32Y0LV39"
+
 [minify]
     disableXML = true
     minifyOutput = true
 
 [params]
+    env = "production"
     defaultTheme = "auto"
     disableThemeToggle = false
     disableSpecial1stPost = false
