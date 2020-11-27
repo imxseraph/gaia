@@ -15,9 +15,6 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Do nothing
-        run: echo "${{ secrets.NOTHING_CONF }}" > nginx/conf.d/nothing.conf
-
       - name: Build image
         run: docker build -t $IMAGE_NAME .
 
