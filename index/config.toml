@@ -1,26 +1,72 @@
 baseURL = "https://muxin.io/"
-title = "My New Hugo Site"
 theme = "hugo-PaperMod"
-defaultContentLanguage = "cn"
+defaultContentLanguage = "zh"
+
+[minify]
+    disableXML = true
+    minifyOutput = true
 
 [params]
+    defaultTheme = "auto"
+    disableThemeToggle = false
+    disableSpecial1stPost = false
     [[params.socialIcons]]
         name = "Github"
         url = "https://github.com/mxseraph"
     [[params.socialIcons]]
         name = "Telegram"
-        url = "/archive"
+        url = "https://t.me/MxSeraph"
 
 [languages]
-    [languages.cn]
+    [languages.zh]
         languageName = "中文"
         title = "方牧心的个人网站"
-        [languages.cn.params.profileMode]
+        [languages.zh.params.profileMode]
             enabled = true
-            title = "你好"
+            title = "方牧心"
+            description = "这都被你给发现了"
+            author = "方牧心"
+            imageUrl = "/avatar.png"
+        [[languages.zh.params.profileMode.buttons]]
+            name = "博客"
+            url = "https://blog.muxin.io"
+        [[languages.zh.menu.main]]
+            identifier = "home"
+            name = "首页"
+            url = "/"
+            weight = -2
+        [[languages.zh.menu.main]]
+            identifier = "blog"
+            name = "博客"
+            url = "https://blog.muxin.io"
+            weight = -1
+        [[languages.zh.menu.main]]
+            identifier = "about"
+            name = "关于我"
+            url = "/about/"
     [languages.en]
         languageName = "English"
         title = "Muxin Fang's Website"
         [languages.en.params.profileMode]
             enabled = true
-            title = "Hello"
+            title = "Muxin Fang"
+            description = "You found something"
+            author = "Muxin Fang"
+            imageUrl = "/avatar.png"
+        [[languages.en.params.profileMode.buttons]]
+            name = "Blog"
+            url = "https://blog.muxin.io/en"
+        [[languages.en.menu.main]]
+            identifier = "home"
+            name = "Home"
+            url = "/"
+            weight = -2
+        [[languages.en.menu.main]]
+            identifier = "blog"
+            name = "Blog"
+            url = "https://blog.muxin.io/en"
+            weight = -1
+        [[languages.en.menu.main]]
+            identifier = "about"
+            name = "About Me"
+            url = "/about/"
