@@ -13,6 +13,7 @@ googleAnalytics = "G-6T32Y0LV39"
     defaultTheme = "auto"
     disableThemeToggle = false
     disableSpecial1stPost = false
+    ShowReadingTime = true
     [[params.socialIcons]]
         name = "Github"
         url = "https://github.com/mxseraph"
@@ -22,13 +23,18 @@ googleAnalytics = "G-6T32Y0LV39"
 
 [languages]
     [languages.zh]
-        languageName = "中文"
-        title = "方牧心的个人网站"
+        languageName = "Chinese"
+        title = "方牧心的网站"
+        [languages.zh.params]
+            description = "这都被你给发现了"
+            author = "方牧心"
+        [languages.zh.params.label]
+            text = "轻语慕心"
+            icon = "/apple-touch-icon.png"
+            iconHeight = 35
         [languages.zh.params.profileMode]
             enabled = true
             title = "方牧心"
-            description = "这都被你给发现了"
-            author = "方牧心"
             imageUrl = "/avatar.png"
         [[languages.zh.params.profileMode.buttons]]
             name = "博客"
@@ -50,11 +56,16 @@ googleAnalytics = "G-6T32Y0LV39"
     [languages.en]
         languageName = "English"
         title = "Muxin Fang's Website"
+        [languages.en.params]
+            description = "You found something"
+            author = "Muxin Fang"
+        [languages.en.params.label]
+            text = "Whisper from Heart"
+            icon = "/apple-touch-icon.png"
+            iconHeight = 35
         [languages.en.params.profileMode]
             enabled = true
             title = "Muxin Fang"
-            description = "You found something"
-            author = "Muxin Fang"
             imageUrl = "/avatar.png"
         [[languages.en.params.profileMode.buttons]]
             name = "Blog"
