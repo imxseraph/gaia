@@ -1,0 +1,33 @@
+baseURL = "https://muxin.io/"
+title = "My New Hugo Site"
+theme = "hugo-PaperMod"
+defaultContentLanguage = "简体中文"
+
+[params]
+    [params.profileMode]
+        enabled = true
+        title = "abc"
+    [[params.socialIcons]]
+        name = "Github"
+        url = "https://github.com/mxseraph"
+    [[params.socialIcons]]
+        name = "Telegram"
+        url = "/archive"
+
+[languages]
+    [languages."简体中文"]
+        languageName = "Chinese"
+        title = "方牧心的个人网站"
+        weight = 2
+    [languages."English"]
+        languageName = "English"
+        title = "Muxin Fang's Website"
+        weight = 1
+
+[menu]
+    [[menu.main]]
+        identifier = "about"
+        name = "about hugo"
+        pre = "<i class='fa fa-heart'></i>"
+        url = "/about/"
+        weight = -110
