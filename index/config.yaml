@@ -1,0 +1,13 @@
+baseURL: "https://muxin.io/"
+title: "My New Hugo Site"
+theme: "hugo-PaperMod"
+params:
+  profileMode:
+    defaultTheme: "auto"
+    enabled: true
+    title: "abc"
+    buttons:
+      - name: Archive
+        url: "/archive"
+      - name: Github
+        url: "https://github.com/"
