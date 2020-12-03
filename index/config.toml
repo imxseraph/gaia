@@ -13,10 +13,10 @@ defaultContentLanguage = "zh"
     ShowReadingTime = true
     [[params.socialIcons]]
         name = "Github"
-        url = "https://github.com/mxseraph"
+        url = "https://github.com/imxseraph"
     [[params.socialIcons]]
         name = "Telegram"
-        url = "https://t.me/MxSeraph"
+        url = "https://t.me/iMxSeraph"
 
 [languages]
     [languages.zh]
