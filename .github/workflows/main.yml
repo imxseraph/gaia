@@ -31,4 +31,4 @@ jobs:
       - name: Create the key
         run: echo '${{ secrets.PRIVATE_KEY }}' > key && chmod 600 key
       - name: Deploy
-        run: ssh -i key -o StrictHostKeychecking=no root@muxin.io "cd /mnt/deploy/gaia && docker pull $IMAGE_NAME && export IMAGE_NAME = $IMAGE_NAME && docker-compose down && docker-compose up -d"
+        run: ssh -i key -o StrictHostKeychecking=no root@muxin.io "cd /mnt/deploy/gaia && docker pull $IMAGE_NAME && export IMAGE_NAME=$IMAGE_NAME && docker-compose down && docker-compose up -d"
