@@ -3,7 +3,7 @@ name: Docker
 on:
   push:
     branches:
-      - master
+      - main
 env:
   IMAGE_NAME: ${{ format('{0}{1}', 'docker.pkg.github.com/imxseraph/gaia/main:', github.sha) }}
 
@@ -23,6 +23,7 @@ jobs:
 
       - name: Push image
         run: docker push $IMAGE_NAME
+        
   deploy:
     needs: push
 
