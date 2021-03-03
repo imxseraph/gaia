@@ -5,7 +5,7 @@ on:
     branches:
       - master
 env:
-  IMAGE_NAME: ${{ join('docker.pkg.github.com/', env.GITHUB_REPOSITORY, ":", env.GITHUB_SHA) }}
+  IMAGE_NAME: ${{ join('docker.pkg.github.com/', github.repository, ':', github.sha) }}
 
 jobs:
   push:
@@ -29,6 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create the key
-        run: echo "${{ secrets.PRIVATE_KEY }}" > key && chmod 600 key
+        run: echo ${{ secrets.PRIVATE_KEY }} > key && chmod 600 key
       - name: Deploy
         run: ssh -i key -o StrictHostKeychecking=no root@muxin.io 'cd /mnt/deploy/gaia && docker-compose down --rmi all && docker-compose up -d'
