@@ -5,7 +5,7 @@ on:
     branches:
       - master
 env:
-  IMAGE_NAME: ${{ join('docker.pkg.github.com/', github.repository, ':', github.sha) }}
+  IMAGE_NAME: ${{ format('{0}{1}{2}{3}', 'docker.pkg.github.com/', github.repository, ':', github.sha) }}
 
 jobs:
   push:
