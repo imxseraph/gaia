@@ -5,7 +5,7 @@ on:
     branches:
       - master
 env:
-  IMAGE_NAME: imxseraph/muxin-io:gaia
+  IMAGE_NAME: ${{ join("docker.pkg.github.com/", env.GITHUB_REPOSITORY, ":", env.GITHUB_SHA) }}
 
 jobs:
   push:
@@ -19,7 +19,7 @@ jobs:
         run: docker build -t $IMAGE_NAME .
 
       - name: Log into registry
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u imxseraph --password-stdin
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login https://docker.pkg.github.com -u ${{ github.repository_owner }} --password-stdin
 
       - name: Push image
         run: docker push $IMAGE_NAME
