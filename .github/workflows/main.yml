@@ -5,7 +5,7 @@ on:
     branches:
       - main
 env:
-  IMAGE_NAME: ${{ format('{0}{1}', 'docker.pkg.github.com/imxseraph/gaia/main:', github.sha) }}
+  IMAGE_NAME: ${{ format('{0}{1}', 'docker.pkg.github.com/imxseraph/gaia/gaia:', github.sha) }}
 
 jobs:
   push:
